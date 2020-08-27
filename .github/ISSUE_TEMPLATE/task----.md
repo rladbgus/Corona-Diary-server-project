@@ -3,11 +3,11 @@ name: Task 템플릿
 about: Task Card 생성시 이용해주세요
 title: ''
 labels: ''
-assignees: ''
+assignees: shinuhyun
 
 ---
 
-Assignee : (본명)
+Assignee : 신우현
 
 Job Description
 작업 내용을 적어주세요
@@ -23,8 +23,8 @@ Task Card 하나의 estimated time / consumed time 이 최대 3h 이 넘어가�
 Labelling
 estimated time : E:?h
 consumed time : C:?h
-page : Mypage, Index ...
-position : Client
+api : signup, signout
+position : Server
 sprint : Sprint
 urgency : High, Middle, Low
 Status 관리
