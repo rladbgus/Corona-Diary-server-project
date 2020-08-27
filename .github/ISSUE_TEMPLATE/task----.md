@@ -10,11 +10,13 @@ assignees: shinuhyun
 Assignee : 신우현
 
 Job Description
-작업 내용을 적어주세요
-(여기)
+- [ ]
+- [ ]
 
 Todo
 해당 작업이 완성되기 위해서 완료되어야 하는 작업 리스트를 적어주세요
+- [ ]
+- [ ]
 
 Important
 estimated / consumed
