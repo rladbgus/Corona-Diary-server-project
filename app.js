@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const port = process.env.PORT || 5000;
 
-// const userRouter = require("./routes/user");
+const userRouter = require("./routes/user");
 // const mypageRouter = require("./routes/mypage");
 // const contentRouter = require("./routes/content");
 // const commentRouter = require("./routes/comment");
@@ -10,7 +10,7 @@ const port = process.env.PORT || 5000;
 
 app.use(express.json());
 
-// app.use("/user", userRouter);
+app.use("/user", userRouter);
 // app.use("/mypage", mypageRouter);
 // app.use("/content", contentRouter);
 // app.use("/comment", commentRouter);
