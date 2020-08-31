@@ -8,6 +8,6 @@ router.get("/", mypageController.getMypage.get);
 // 마이페이지 정보를 수정할 때 사용합니다.
 // router.patch("/", mypageController.patchMypage.patch);
 //
-// router.post("/", mypageController.postPasswordMypage.post);
+router.post("/", mypageController.postPasswordMypage.post);
 
 module.exports = router;
