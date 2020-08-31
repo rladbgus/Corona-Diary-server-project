@@ -5,4 +5,5 @@ module.exports = {
   signout: require("./signout"),
   checkEmail: require("./checkEmail"),
   checkNickName: require("./checkNickName"),
+  checkTocken: require("./checkToken"),
 };
