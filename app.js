@@ -5,6 +5,7 @@ const config = require("./config/auth.config");
 const port = process.env.PORT || 5000;
 const morgan = require("morgan");
 
+const authMiddleware = require("./middlewares/auth.js");
 const userRouter = require("./routes/user");
 const mypageRouter = require("./routes/mypage");
 // const contentRouter = require("./routes/content");
@@ -28,6 +29,7 @@ app.use(morgan("dev"));
 app.set("jwt-secret", config.secret);
 
 app.use("/user", userRouter);
+app.use("/", authMiddleware);
 app.use("/mypage", mypageRouter);
 // app.use("/content", contentRouter);
 // app.use("/comment", commentRouter);
