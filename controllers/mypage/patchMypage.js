@@ -1,18 +1,21 @@
 const db = require("../../models");
+const jwt = require("jsonwebtoken");
 
 // 마이페이지 정보를 수정할 때 사용합니다.
 module.exports = {
   patch: (req, res) => {
-    const { email, password, age, city } = req.body;
+    const token = req.headers["x-access-token"];
+    const decoded = jwt.verify(token, req.app.get("jwt-secret"));
+    const { password, age, city } = req.body;
 
     try {
-      db.User.updatePassword(email, password);
+      db.User.updatePassword(decoded.email, password);
       db.User.update(
         {
           age: age,
           city: city,
         },
-        { where: { email: email } }
+        { where: { email: decoded.email } }
       ).then((modified) => {
         if (modified) {
           res.status(201).send(modified);
