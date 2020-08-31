@@ -11,7 +11,7 @@ module.exports = {
           where: { email: email },
         });
         if (checkEmail) {
-          return res.status(409).send({ message: "Email already exists" });
+          return res.status(201).send({ message: "Email already exists" });
         } else {
           return res.status(200).send({ message: "Email is available" });
         }
