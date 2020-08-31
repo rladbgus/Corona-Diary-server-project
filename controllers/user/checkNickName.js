@@ -11,7 +11,7 @@ module.exports = {
           where: { nickName: nickName },
         });
         if (checkNickName) {
-          return res.status(409).send({ message: "NickName already exists" });
+          return res.status(201).send({ message: "NickName already exists" });
         } else {
           return res.status(200).send({ message: "NickName is available" });
         }
