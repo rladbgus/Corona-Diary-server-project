@@ -5,7 +5,7 @@ const port = process.env.PORT || 5000;
 const morgan = require("morgan");
 
 const userRouter = require("./routes/user");
-// const mypageRouter = require("./routes/mypage");
+const mypageRouter = require("./routes/mypage");
 // const contentRouter = require("./routes/content");
 // const commentRouter = require("./routes/comment");
 // const contentListRouter = require("./routes/contentList");
@@ -19,7 +19,7 @@ app.use(morgan("dev"));
 app.set("jwt-secret", config.secret);
 
 app.use("/user", userRouter);
-// app.use("/mypage", mypageRouter);
+app.use("/mypage", mypageRouter);
 // app.use("/content", contentRouter);
 // app.use("/comment", commentRouter);
 // app.use("/contentList", contentListRouter);
