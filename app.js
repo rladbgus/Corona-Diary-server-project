@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const cors = require("cors");
 const config = require("./config/auth.config");
 const port = process.env.PORT || 5000;
 const morgan = require("morgan");
@@ -9,6 +10,14 @@ const userRouter = require("./routes/user");
 // const contentRouter = require("./routes/content");
 // const commentRouter = require("./routes/comment");
 // const contentListRouter = require("./routes/contentList");
+
+app.use(
+  cors({
+    origin: ["http://localhost:3000"],
+    method: ["GET", "POST", "DELETE", "PATCH"],
+    credentials: true,
+  })
+);
 
 app.use(express.json());
 
