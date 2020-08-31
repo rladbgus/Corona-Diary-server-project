@@ -4,10 +4,9 @@ const db = require("../../models");
 module.exports = {
   get: (req, res) => {
     const { email } = req.body;
-    const tokenCheck = true;
     db.User.findOne({
       where: { email: email },
-      attributes: ["email", "password", "nickName", "age", "city"],
+      attributes: ["email", "nickName", "age", "city"],
     }).then((userInfo) => {
       if (userInfo) {
         res.status(200).send(userInfo);
