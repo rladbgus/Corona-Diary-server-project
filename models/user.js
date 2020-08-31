@@ -59,6 +59,17 @@ module.exports = (sequelize, DataTypes) => {
     }
     return false;
   };
+  User.findOneByEmailAndPassword = async (email, password) => {
+    let user = await User.findOne({ attributes: ["salt"], where: { email } });
+    if (user !== null) {
+      const { salt } = user;
+      const encryptedPassword = User.encryptPassword(password, salt);
+      user = await User.findOne({
+        where: { email, password: encryptedPassword },
+      });
+    }
+    return user;
+  };
   User.associate = function (models) {
     this.hasMany(models.Content, {
       foreignKey: "userId",

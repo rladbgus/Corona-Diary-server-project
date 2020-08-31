@@ -1,6 +1,8 @@
 const express = require("express");
 const app = express();
+const config = require("./config/auth.config");
 const port = process.env.PORT || 5000;
+const morgan = require("morgan");
 
 const userRouter = require("./routes/user");
 // const mypageRouter = require("./routes/mypage");
@@ -9,6 +11,12 @@ const userRouter = require("./routes/user");
 // const contentListRouter = require("./routes/contentList");
 
 app.use(express.json());
+
+// print the request log on console
+app.use(morgan("dev"));
+
+// set the secret key variable for jwt
+app.set("jwt-secret", config.secret);
 
 app.use("/user", userRouter);
 // app.use("/mypage", mypageRouter);
