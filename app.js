@@ -10,7 +10,7 @@ const userRouter = require("./routes/user");
 const mypageRouter = require("./routes/mypage");
 const contentRouter = require("./routes/content");
 const commentRouter = require("./routes/comment");
-// const contentListRouter = require("./routes/contentList");
+const contentListRouter = require("./routes/contentList");
 
 app.use(
   cors({
@@ -33,7 +33,7 @@ app.use("/", authMiddleware);
 app.use("/mypage", mypageRouter);
 app.use("/content", contentRouter);
 app.use("/comment", commentRouter);
-// app.use("/contentList", contentListRouter);
+app.use("/", contentListRouter);
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
