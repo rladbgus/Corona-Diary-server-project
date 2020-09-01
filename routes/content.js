@@ -10,7 +10,7 @@ router.post("/", contentController.makeContent.post);
 router.get("/:contentId", contentController.getContent.get);
 
 // 글을 수정할 때 사용합니다.
-router.patch("/", contentController.patchContent.patch);
+router.patch("/:contentId", contentController.patchContent.patch);
 
 // 글을 삭제할 때 사용합니다.
 router.delete("/", contentController.deleteContent.delete);
