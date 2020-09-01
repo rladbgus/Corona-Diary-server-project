@@ -8,7 +8,7 @@ module.exports = {
       const decoded = await jwt.verify(token, req.app.get("jwt-secret"));
 
       const myContentList = await Content.findAll({
-        attributes: ["id", "title", "text", "updatedAt"],
+        attributes: ["id", "title", "text", "createdAt"],
         where: { userId: decoded.id },
       });
       res.status(200).send({ contentList: myContentList });
