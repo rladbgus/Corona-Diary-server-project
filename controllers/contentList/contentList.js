@@ -4,7 +4,7 @@ module.exports = {
   get: async (req, res) => {
     try {
       const contentList = await Content.findAll({
-        attributes: ["id", "title", "text", "updatedAt"],
+        attributes: ["id", "title", "text", "createdAt"],
       });
       res.status(200).send({ contentList: contentList });
     } catch (err) {
