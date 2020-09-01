@@ -2,7 +2,7 @@ const { User } = require("../../models");
 const jwt = require("jsonwebtoken");
 
 module.exports = {
-  patch: async (req, res) => {
+  get: async (req, res) => {
     const token = req.headers["x-access-token"];
     const decoded = await jwt.verify(token, req.app.get("jwt-secret"));
 
