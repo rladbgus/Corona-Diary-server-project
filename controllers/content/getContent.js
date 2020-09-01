@@ -1,5 +1,6 @@
 const db = require("../../models");
 const jwt = require("jsonwebtoken");
+const { sequelize } = require("../../models");
 
 // 작성된 글을 불러올 때 사용합니다.
 module.exports = {
@@ -9,7 +10,7 @@ module.exports = {
     const { contentId } = req.params;
 
     try {
-      db.Content.findAll({
+      db.Content.findOne({
         where: { id: contentId },
         attributes: [
           "id",
@@ -18,6 +19,7 @@ module.exports = {
           "covid_date",
           "referenceFile",
           "like",
+          "createdAt",
         ],
         include: [
           { model: db.User, as: "user", attributes: ["id", "nickName"] },
