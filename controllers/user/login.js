@@ -13,7 +13,9 @@ module.exports = {
         res.status(404).json({ message: "login fail; Wrong info" });
       } else {
         // 24 hours
-        const token = jwt.sign({ email: email }, secret, { expiresIn: 86400 });
+        const token = jwt.sign({ email: email, id: result.id }, secret, {
+          expiresIn: 86400,
+        });
         // 로그인 성공
         res.status(200).json({ message: "login success!", token: token });
       }

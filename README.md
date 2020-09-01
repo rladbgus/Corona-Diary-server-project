@@ -15,6 +15,6 @@
    :books: [패키지 설치]
    :sparkles: [추가]
    :hammer: [수정]
-   :bronken heart: [버그]
+   :broken_heart: [버그]
    :nail_care: [CSS]
    :guitar: [기타]
