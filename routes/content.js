@@ -7,7 +7,7 @@ const { contentController } = require("../controllers");
 router.post("/", contentController.makeContent.post);
 
 // 작성된 글을 불러올 때 사용합니다.
-router.get("/", contentController.getContent.get);
+router.get("/:contentId", contentController.getContent.get);
 
 // 글을 수정할 때 사용합니다.
 router.patch("/", contentController.patchContent.patch);

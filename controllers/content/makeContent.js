@@ -40,7 +40,10 @@ module.exports = {
             userId: user.id,
           }).then((result) => {
             if (result) {
-              res.status(201).send("게시글이 작성되었습니다.");
+              res.status(201).send({
+                message: "게시글이 작성되었습니다.",
+                contentId: result.id,
+              });
             } else {
               res.status(404).send("잘못된 요청입니다.");
             }
