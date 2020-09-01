@@ -13,6 +13,6 @@ router.get("/:contentId", contentController.getContent.get);
 router.patch("/:contentId", contentController.patchContent.patch);
 
 // 글을 삭제할 때 사용합니다.
-router.delete("/", contentController.deleteContent.delete);
+router.delete("/:contentId", contentController.deleteContent.delete);
 
 module.exports = router;
