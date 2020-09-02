@@ -10,5 +10,5 @@ router.post("/login", userController.login.post);
 
 router.use("/", authMiddleware);
 router.get("/check", userController.checkTocken.check);
-router.get("/signout", userController.signout.get);
+router.patch("/signout", userController.signout.patch);
 module.exports = router;
