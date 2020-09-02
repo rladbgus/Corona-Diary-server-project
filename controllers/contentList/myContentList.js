@@ -10,6 +10,8 @@ module.exports = {
       const myContentList = await Content.findAll({
         attributes: ["id", "title", "text", "createdAt"],
         where: { userId: decoded.id },
+        order: [["createdAt", "DESC"]],
+        limit: 6,
       });
       res.status(200).send({ contentList: myContentList });
     } catch (err) {

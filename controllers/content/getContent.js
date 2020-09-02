@@ -36,6 +36,7 @@ module.exports = {
             },
           },
         ],
+        order: [[{ model: db.Comment, as: "comment" }, "createdAt", "DESC"]],
       }).then((contentDetail) => {
         if (contentDetail) {
           res.status(200).send({ contentDetail: contentDetail });

@@ -5,6 +5,8 @@ module.exports = {
     try {
       const contentList = await Content.findAll({
         attributes: ["id", "title", "text", "createdAt"],
+        order: [["createdAt", "DESC"]],
+        // limit: 6,
       });
       res.status(200).send({ contentList: contentList });
     } catch (err) {
