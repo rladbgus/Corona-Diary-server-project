@@ -18,7 +18,6 @@ module.exports = {
       q_sleep,
       q_fatigue,
       q_psy,
-      like,
     } = req.body;
 
     try {
@@ -36,7 +35,6 @@ module.exports = {
             q_sleep: q_sleep,
             q_fatigue: q_fatigue,
             q_psy: q_psy,
-            like: like,
             userId: user.id,
           }).then((result) => {
             if (result) {
