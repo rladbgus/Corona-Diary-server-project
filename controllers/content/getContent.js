@@ -1,12 +1,8 @@
 const db = require("../../models");
-const jwt = require("jsonwebtoken");
-const { sequelize } = require("../../models");
 
 // 작성된 글을 불러올 때 사용합니다.
 module.exports = {
   get: (req, res) => {
-    const token = req.headers["x-access-token"];
-    const decoded = jwt.verify(token, req.app.get("jwt-secret"));
     const { contentId } = req.params;
 
     try {
@@ -31,10 +27,18 @@ module.exports = {
               { model: db.User, as: "user", attributes: ["id", "nickName"] },
             ],
           },
+          {
+            model: db.Tag,
+            as: "tag",
+            attributes: ["id", "tag"],
+            through: {
+              attributes: [],
+            },
+          },
         ],
-      }).then((contentDatail) => {
-        if (contentDatail) {
-          res.status(200).send({ message: "성공!", result: contentDatail });
+      }).then((contentDetail) => {
+        if (contentDetail) {
+          res.status(200).send({ contentDetail: contentDetail });
         } else {
           res.status(404).send("잘못된 요청입니다.");
         }
