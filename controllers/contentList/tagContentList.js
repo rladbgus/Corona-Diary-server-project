@@ -18,6 +18,7 @@ module.exports = {
             },
           },
         ],
+        order: [["createdAt", "DESC"]],
       });
       res.status(200).send({ tagContentList: tagContentList });
     } catch (err) {
