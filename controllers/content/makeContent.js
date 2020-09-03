@@ -42,13 +42,20 @@ module.exports = {
               if (result) {
                 // 태그 테이블에 저장
                 tags.map((eachTag) => {
-                  db.Tag.create({ tag: eachTag })
-                    .then((eachTagDetail) => {
+                  // findOrCreate 사용해서 태그 중복 활용하기
+                  db.Tag.findOrCreate({
+                    where: { tag: eachTag },
+                    defaults: { tag: eachTag },
+                  })
+                    .then(([eachTagDetail, created]) => {
                       // 태그와 유저의 조인테이블에 저장
-                      db.User_Tag.create({
-                        userId: decoded.id,
-                        tagId: eachTagDetail.id,
-                      }).then((eachTagDetail2) => {
+                      db.User_Tag.findOrCreate({
+                        where: { tagId: eachTagDetail.id },
+                        defaults: {
+                          userId: decoded.id,
+                          tagId: eachTagDetail.id,
+                        },
+                      }).then(([eachTagDetail2, created]) => {
                         // 태그와 컨텐츠의 조인테이블에 저장
                         db.Content_Tag.create({
                           contentId: result.id,
