@@ -14,7 +14,10 @@ const contentListRouter = require("./routes/contentList");
 
 app.use(
   cors({
-    origin: ["http://localhost:3000", "http://corona-diary.s3-website.ap-northeast-2.amazonaws.com"],
+    origin: [
+      "http://localhost:3000",
+      "http://corona-diary.s3-website.ap-northeast-2.amazonaws.com",
+    ],
     method: ["GET", "POST", "DELETE", "PATCH"],
     credentials: true,
   })
@@ -33,11 +36,12 @@ app.get("/", (req, res) => {
 });
 
 app.use("/user", userRouter);
+app.use("/content", contentRouter);
+app.use("/", contentListRouter);
+
 app.use("/", authMiddleware);
 app.use("/mypage", mypageRouter);
-app.use("/content", contentRouter);
 app.use("/comment", commentRouter);
-app.use("/", contentListRouter);
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
