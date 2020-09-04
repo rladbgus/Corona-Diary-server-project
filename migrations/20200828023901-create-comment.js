@@ -41,8 +41,8 @@ module.exports = {
               tableName: "Contents",
               key: "id",
             },
-            onDelete: "CASCADE",
           },
+          onDelete: "CASCADE",
         },
       },
       {

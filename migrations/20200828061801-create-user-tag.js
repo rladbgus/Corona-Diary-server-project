@@ -16,8 +16,8 @@ module.exports = {
             tableName: "Users",
             key: "id",
           },
-          onDelete: "CASCADE",
         },
+        onDelete: "CASCADE",
       },
       tagId: {
         type: Sequelize.INTEGER,
@@ -28,8 +28,8 @@ module.exports = {
             tableName: "Tags",
             key: "id",
           },
-          onDelete: "CASCADE",
         },
+        onDelete: "CASCADE",
       },
       createdAt: {
         allowNull: false,
