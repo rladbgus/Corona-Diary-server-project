@@ -15,13 +15,11 @@ module.exports = (sequelize, DataTypes) => {
       this.hasMany(models.Comment, {
         foreignKey: "contentId",
         as: "comment",
-        onDelete: "cascade",
       });
       this.belongsToMany(models.Tag, {
         through: "Content_Tag",
         foreignKey: "contentId",
         as: "tag",
-        onDelete: "cascade",
       });
     }
   }
