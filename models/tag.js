@@ -12,11 +12,13 @@ module.exports = (sequelize, DataTypes) => {
         through: "User_Tag",
         foreignKey: "tagId",
         as: "user",
+        onDelete: "cascade",
       });
       this.belongsToMany(models.Content, {
         through: "Content_Tag",
         foreignKey: "tagId",
         as: "content",
+        onDelete: "cascade",
       });
     }
   }
