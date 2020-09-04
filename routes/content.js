@@ -15,4 +15,8 @@ router.patch("/:contentId", contentController.patchContent.patch);
 // 글을 삭제할 때 사용합니다.
 router.delete("/:contentId", contentController.deleteContent.delete);
 
+router.post("/:contentId/like", contentController.plusLike.post);
+
+router.patch("/:contentId/like", contentController.minusLike.patch);
+
 module.exports = router;
