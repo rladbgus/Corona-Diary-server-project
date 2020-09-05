@@ -9,7 +9,11 @@ module.exports = {
         by: 1,
         where: { id: contentId },
       });
-      res.status(200).send("Minus!");
+      const minusLike = await Content.findOne({
+        where: { id: contentId },
+        attributes: ["like"],
+      });
+      res.status(200).send(minusLike);
     } catch (err) {
       console.log(err);
       res.status(500).send("Server Error");
