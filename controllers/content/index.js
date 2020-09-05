@@ -5,4 +5,5 @@ module.exports = {
   deleteContent: require("./deleteContent"),
   plusLike: require("./plusLike"),
   minusLike: require("./minusLike"),
+  // uploadFile: require("./uploadFile"),
 };
