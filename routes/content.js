@@ -4,7 +4,6 @@ const path = require("path");
 const AWS = require("aws-sdk");
 const multer = require("multer");
 const multerS3 = require("multer-s3");
-const authMiddleware = require("../middlewares/auth");
 
 const { contentController } = require("../controllers");
 
@@ -12,9 +11,6 @@ const { contentController } = require("../controllers");
 router.get("/:contentId", contentController.getContent.get);
 router.patch("/:contentId/like", contentController.minusLike.patch);
 router.post("/:contentId/like", contentController.plusLike.post);
-
-router.use("/", authMiddleware);
-
 // 글을 작성할 때 사용합니다.
 router.post("/", contentController.makeContent.post);
 

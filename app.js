@@ -36,10 +36,11 @@ app.get("/", (req, res) => {
 });
 
 app.use("/user", userRouter);
-app.use("/content", contentRouter);
 app.use("/", contentListRouter);
 
 app.use("/", authMiddleware);
+
+app.use("/content", contentRouter);
 app.use("/mypage", mypageRouter);
 app.use("/comment", commentRouter);
 
