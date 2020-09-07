@@ -23,7 +23,6 @@ module.exports = {
           allowNull: false,
         },
         referenceFile: Sequelize.STRING,
-        like: { type: Sequelize.INTEGER, defaultValue: 0 },
         q_temp: {
           type: Sequelize.FLOAT,
           allowNull: false,
