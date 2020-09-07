@@ -13,21 +13,25 @@ module.exports = {
     const content = await db.Content.findOne({
       where: { id: contentId, userId: decoded.id },
     });
-    let key = content.referenceFile.substring(58);
-    const params = { Bucket: "corona-diary-test", Key: key };
+    if (!content.referenceFile) {
+      console.log("기존 이미지 파일이 존재하지 않습니다.");
+    } else {
+      let key = content.referenceFile.substring(58);
+      const params = { Bucket: "corona-diary-test", Key: key };
 
-    s3.deleteObject(params, (err, data) => {
-      if (err) {
-        return res.json({
-          success: false,
-          errors: {
-            title: "Image Upload Error",
-            detail: err.message,
-            error: err,
-          },
-        });
-      }
-    });
+      s3.deleteObject(params, (err, data) => {
+        if (err) {
+          return res.json({
+            success: false,
+            errors: {
+              title: "Image Upload Error",
+              detail: err.message,
+              error: err,
+            },
+          });
+        }
+      });
+    }
     next();
   },
 };
