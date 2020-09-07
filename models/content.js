@@ -16,6 +16,10 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "contentId",
         as: "comment",
       });
+      this.hasMany(models.Like, {
+        foreignKey: "contentId",
+        as: "like",
+      });
       this.belongsToMany(models.Tag, {
         through: "Content_Tag",
         foreignKey: "contentId",
