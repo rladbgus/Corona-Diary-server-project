@@ -42,7 +42,6 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
       referenceFile: DataTypes.STRING,
-      like: { type: DataTypes.INTEGER, defaultValue: 0 },
       q_temp: {
         type: DataTypes.FLOAT,
         allowNull: false,
