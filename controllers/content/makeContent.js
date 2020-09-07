@@ -10,7 +10,6 @@ module.exports = {
       title,
       text,
       covid_date,
-      referenceFile,
       q_temp,
       q_resp,
       q_cough,
@@ -19,14 +18,18 @@ module.exports = {
       q_fatigue,
       q_psy,
       tags,
-    } = req.body;
+    } = JSON.parse(req.body.data);
 
     try {
+      let bin = req.file;
+      if (!bin) {
+        bin = "";
+      }
       const content = await db.Content.create({
         title: title,
         text: text,
         covid_date: covid_date,
-        referenceFile: referenceFile,
+        referenceFile: bin.location,
         q_temp: q_temp,
         q_resp: q_resp,
         q_cough: q_cough,
@@ -36,6 +39,7 @@ module.exports = {
         q_psy: q_psy,
         userId: decoded.id,
       });
+
       if (!content) {
         res.status(404).send("잘못된 요청입니다.");
       } else {
