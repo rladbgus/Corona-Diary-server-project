@@ -11,7 +11,6 @@ module.exports = {
       title,
       text,
       covid_date,
-      referenceFile,
       q_temp,
       q_resp,
       q_cough,
@@ -20,9 +19,14 @@ module.exports = {
       q_fatigue,
       q_psy,
       tags,
-    } = req.body;
+    } = JSON.parse(req.body.data);
 
     try {
+      let bin = req.file;
+      if (!bin) {
+        bin = "";
+      }
+
       db.Content.findOne({ where: { id: contentId, userId: decoded.id } })
         .then((content) => {
           db.Content.update(
@@ -30,7 +34,7 @@ module.exports = {
               title: title,
               text: text,
               covid_date: covid_date,
-              referenceFile: referenceFile,
+              referenceFile: bin.location,
               q_temp: q_temp,
               q_resp: q_resp,
               q_cough: q_cough,

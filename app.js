@@ -18,6 +18,7 @@ app.use(
       "http://localhost:3000",
       "http://corona-diary.s3-website.ap-northeast-2.amazonaws.com",
     ],
+    allowedHeaders: "*",
     method: ["GET", "POST", "DELETE", "PATCH"],
     credentials: true,
   })
