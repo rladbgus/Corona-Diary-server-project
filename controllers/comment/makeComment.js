@@ -25,7 +25,7 @@ module.exports = {
           });
           res.status(201).send({
             message: "ParentComment created!",
-            commentId: parentComment,
+            commentId: parentComment.id,
           });
         } else {
           //child일 경우
@@ -41,9 +41,10 @@ module.exports = {
             depth: 1,
           });
           // await childComment.increment("depth", { by: 1 });
-          res
-            .status(201)
-            .send({ message: "ChildComment created!", comment: childComment });
+          res.status(201).send({
+            message: "ChildComment created!",
+            comment: childComment.id,
+          });
         }
       }
     } catch (err) {
