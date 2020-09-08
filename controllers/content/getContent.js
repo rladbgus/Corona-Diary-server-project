@@ -2,11 +2,11 @@ const db = require("../../models");
 
 // 작성된 글을 불러올 때 사용합니다.
 module.exports = {
-  get: (req, res) => {
+  get: async (req, res) => {
     const { contentId } = req.params;
 
     try {
-      db.Content.findOne({
+      const findContent = await db.Content.findOne({
         where: { id: contentId },
         attributes: [
           "id",
@@ -21,7 +21,6 @@ module.exports = {
           "q_psy",
           "covid_date",
           "referenceFile",
-          "like",
           "createdAt",
         ],
         include: [
@@ -44,13 +43,17 @@ module.exports = {
           },
         ],
         order: [[{ model: db.Comment, as: "comment" }, "createdAt", "DESC"]],
-      }).then((contentDetail) => {
-        if (contentDetail) {
-          res.status(200).send({ contentDetail: contentDetail });
-        } else {
-          res.status(404).send("잘못된 요청입니다.");
-        }
       });
+
+      const likeNum = await db.Like.count({
+        where: { contentId: contentId, like: true },
+      });
+
+      if (findContent) {
+        res.status(200).send({ Content: findContent, like: likeNum });
+      } else {
+        res.status(404).send("잘못된 요청입니다.");
+      }
     } catch (err) {
       (err) => {
         console.log(err);
