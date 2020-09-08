@@ -16,9 +16,15 @@ module.exports = {
       if (deleteComment === null) {
         res.status(404).json({ message: "Comment not exists" });
       } else {
-        await Comment.destroy({
-          where: { id: commentId, userId: decoded.id },
-        });
+        if (deleteComment.depth !== 0) {
+          await Comment.destroy({
+            where: { id: commentId, userId: decoded.id },
+          });
+        } else {
+          await Comment.destroy({
+            where: { group: commentId },
+          });
+        }
         // 삭제가 성공되었으면 200 응답
         res.status(200).json({ message: "Comment deleted" });
       }
