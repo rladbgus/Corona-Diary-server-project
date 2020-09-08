@@ -7,8 +7,7 @@ const { fileDeleteMiddleware } = require("../middlewares/s3FileDelete");
 
 // 작성된 글을 불러올 때 사용합니다.
 router.get("/:contentId", contentController.getContent.get);
-router.patch("/:contentId/like", contentController.minusLike.patch);
-router.post("/:contentId/like", contentController.plusLike.post);
+router.post("/:contentId/like", contentController.like.post);
 
 // 글을 수정할 때 사용합니다.
 router.patch("/:contentId", contentController.patchContent.patch);
