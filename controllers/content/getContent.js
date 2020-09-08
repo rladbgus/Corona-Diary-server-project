@@ -45,7 +45,7 @@ module.exports = {
         order: [
           [{ model: db.Comment, as: "comment" }, "group", "DESC"],
           [{ model: db.Comment, as: "comment" }, "depth", "ASC"],
-          [{ model: db.Comment, as: "comment" }, "createdAt", "DESC"],
+          [{ model: db.Comment, as: "comment" }, "createdAt", "ASC"],
         ],
       });
 
