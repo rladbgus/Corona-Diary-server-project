@@ -28,7 +28,7 @@ module.exports = {
           {
             model: db.Comment,
             as: "comment",
-            attributes: ["id", "comment", "createdAt"],
+            attributes: ["id", "comment", "depth", "group", "createdAt"],
             include: [
               { model: db.User, as: "user", attributes: ["id", "nickName"] },
             ],
@@ -42,7 +42,11 @@ module.exports = {
             },
           },
         ],
-        order: [[{ model: db.Comment, as: "comment" }, "createdAt", "DESC"]],
+        order: [
+          [{ model: db.Comment, as: "comment" }, "group", "DESC"],
+          [{ model: db.Comment, as: "comment" }, "depth", "ASC"],
+          [{ model: db.Comment, as: "comment" }, "createdAt", "DESC"],
+        ],
       });
 
       const likeNum = await db.Like.count({

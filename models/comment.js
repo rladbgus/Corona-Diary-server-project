@@ -24,6 +24,14 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.TEXT,
         allowNull: false,
       },
+      group: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0,
+        allowNull: false,
+      },
+      depth: {
+        type: DataTypes.INTEGER,
+      },
     },
     {
       sequelize,
