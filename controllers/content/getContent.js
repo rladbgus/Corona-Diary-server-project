@@ -1,10 +1,11 @@
 const db = require("../../models");
-
+const jwt = require("jsonwebtoken");
 // 작성된 글을 불러올 때 사용합니다.
 module.exports = {
   get: async (req, res) => {
     const { contentId } = req.params;
-
+    const token = req.headers["x-access-token"];
+    const decoded = jwt.verify(token, req.app.get("jwt-secret"));
     try {
       const findContent = await db.Content.findOne({
         where: { id: contentId },
@@ -32,6 +33,12 @@ module.exports = {
             include: [
               { model: db.User, as: "user", attributes: ["id", "nickName"] },
             ],
+          },
+          {
+            model: db.Like,
+            as: "like",
+            attributes: ["like"],
+            where: { userId: decoded.id },
           },
           {
             model: db.Tag,
