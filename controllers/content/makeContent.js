@@ -19,6 +19,7 @@ module.exports = {
       q_psy,
       tags,
     } = req.body;
+    const tagArr = tags.split(",");
 
     try {
       let bin = req.file;
@@ -43,13 +44,13 @@ module.exports = {
       if (!content) {
         res.status(404).send("잘못된 요청입니다.");
       } else {
-        if (tags.length === 0) {
+        if (tagArr.length === 0) {
           res.status(201).send({
             message: "게시글이 작성되었습니다.",
             contentId: content.id,
           });
         } else {
-          tags.map((eachTag) => {
+          tagArr.map((eachTag) => {
             // findOrCreate 사용해서 태그 중복 활용하기
             db.Tag.findOrCreate({
               where: { tag: eachTag },
