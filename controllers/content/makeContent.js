@@ -4,8 +4,6 @@ const jwt = require("jsonwebtoken");
 // 글을 작성할 때 사용합니다.
 module.exports = {
   post: async (req, res) => {
-    console.log("contains non-file fields", req.fields);
-    console.log("tags", req.fields.tags);
     const token = req.headers["x-access-token"];
     const decoded = jwt.verify(token, req.app.get("jwt-secret"));
     const {
@@ -20,10 +18,10 @@ module.exports = {
       q_fatigue,
       q_psy,
       tags,
-    } = req.fields;
+    } = req.body;
 
     try {
-      let bin = req.fields.imgFile;
+      let bin = req.file;
       if (!bin) {
         bin = "";
       }
@@ -31,7 +29,7 @@ module.exports = {
         title: title,
         text: text,
         covid_date: covid_date,
-        referenceFile: bin,
+        referenceFile: bin.location,
         q_temp: q_temp,
         q_resp: q_resp,
         q_cough: q_cough,
