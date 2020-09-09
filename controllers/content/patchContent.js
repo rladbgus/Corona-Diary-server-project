@@ -19,7 +19,7 @@ module.exports = {
       q_fatigue,
       q_psy,
       tags,
-    } = JSON.parse(req.body.data);
+    } = req.body;
 
     try {
       let bin = req.file;
