@@ -35,12 +35,6 @@ module.exports = {
             ],
           },
           {
-            model: db.Like,
-            as: "like",
-            attributes: ["like"],
-            where: { userId: decoded.id },
-          },
-          {
             model: db.Tag,
             as: "tag",
             attributes: ["id", "tag"],
@@ -55,13 +49,29 @@ module.exports = {
           [{ model: db.Comment, as: "comment" }, "createdAt", "ASC"],
         ],
       });
+      const userLike = await db.Like.findOne({
+        attributes: ["like"],
+        where: { userId: decoded.id },
+      });
 
       const likeNum = await db.Like.count({
         where: { contentId: contentId, like: true },
       });
 
       if (findContent) {
-        res.status(200).send({ Content: findContent, like: likeNum });
+        if (!userLike) {
+          res.status(200).send({
+            Content: findContent,
+            like: likeNum,
+            userLike: false,
+          });
+        } else {
+          res.status(200).send({
+            Content: findContent,
+            like: likeNum,
+            userLike: userLike.like,
+          });
+        }
       } else {
         res.status(404).send("잘못된 요청입니다.");
       }
