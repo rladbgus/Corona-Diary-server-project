@@ -20,6 +20,7 @@ module.exports = {
       q_psy,
       tags,
     } = req.body;
+    const tagArr = tags.split(",");
 
     try {
       let bin = req.file;
@@ -56,7 +57,8 @@ module.exports = {
                   });
                 }
               );
-              tags.map((eachTag) => {
+
+              tagArr.map((eachTag) => {
                 // findOrCreate 사용해서 태그 중복 활용하기
                 db.Tag.findOrCreate({
                   where: { tag: eachTag },
