@@ -1,7 +1,7 @@
 const db = require("../models");
 const jwt = require("jsonwebtoken");
 const AWS = require("aws-sdk");
-// AWS.config.loadFromPath(__dirname + "/../config/awsconfig.json");
+AWS.config.loadFromPath(__dirname + "/../config/awsconfig.json");
 let s3 = new AWS.S3();
 
 module.exports = {
