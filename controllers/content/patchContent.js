@@ -85,7 +85,9 @@ module.exports = {
                     res.status(500).send("Server Error");
                   });
               });
-              res.status(201).send({ message: "수정되었습니다" });
+              res
+                .status(201)
+                .send({ message: "수정되었습니다", contentId: contentId });
             } else {
               res.status(404).send("잘못된 요청입니다");
             }
