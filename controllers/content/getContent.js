@@ -51,7 +51,7 @@ module.exports = {
       });
       const userLike = await db.Like.findOne({
         attributes: ["like"],
-        where: { userId: decoded.id },
+        where: { userId: decoded.id, contentId: contentId },
       });
 
       const likeNum = await db.Like.count({
