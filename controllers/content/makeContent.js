@@ -43,7 +43,7 @@ module.exports = {
       if (!content) {
         res.status(404).send("잘못된 요청입니다.");
       } else {
-        if (!tags) {
+        if (!tags || tags === "undefined") {
           res.status(201).send({
             message: "게시글이 작성되었습니다.",
             contentId: content.id,
