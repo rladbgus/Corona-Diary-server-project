@@ -39,7 +39,6 @@ module.exports = (sequelize, DataTypes) => {
       },
       covid_date: {
         type: DataTypes.INTEGER,
-        allowNull: false,
       },
       referenceFile: DataTypes.STRING,
       q_temp: {

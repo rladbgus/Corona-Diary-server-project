@@ -20,7 +20,6 @@ module.exports = {
         },
         covid_date: {
           type: Sequelize.INTEGER,
-          allowNull: false,
         },
         referenceFile: Sequelize.STRING,
         q_temp: {
