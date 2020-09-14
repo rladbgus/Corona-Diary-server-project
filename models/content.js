@@ -44,31 +44,24 @@ module.exports = (sequelize, DataTypes) => {
       referenceFile: DataTypes.STRING,
       q_temp: {
         type: DataTypes.FLOAT,
-        allowNull: false,
       },
       q_resp: {
         type: DataTypes.INTEGER,
-        allowNull: false,
       },
       q_cough: {
         type: DataTypes.INTEGER,
-        allowNull: false,
       },
       q_appet: {
         type: DataTypes.INTEGER,
-        allowNull: false,
       },
       q_sleep: {
         type: DataTypes.INTEGER,
-        allowNull: false,
       },
       q_fatigue: {
         type: DataTypes.INTEGER,
-        allowNull: false,
       },
       q_psy: {
         type: DataTypes.INTEGER,
-        allowNull: false,
       },
     },
     {

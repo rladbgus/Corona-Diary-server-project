@@ -25,31 +25,24 @@ module.exports = {
         referenceFile: Sequelize.STRING,
         q_temp: {
           type: Sequelize.FLOAT,
-          allowNull: false,
         },
         q_resp: {
           type: Sequelize.INTEGER,
-          allowNull: false,
         },
         q_cough: {
           type: Sequelize.INTEGER,
-          allowNull: false,
         },
         q_appet: {
           type: Sequelize.INTEGER,
-          allowNull: false,
         },
         q_sleep: {
           type: Sequelize.INTEGER,
-          allowNull: false,
         },
         q_fatigue: {
           type: Sequelize.INTEGER,
-          allowNull: false,
         },
         q_psy: {
           type: Sequelize.INTEGER,
-          allowNull: false,
         },
         createdAt: {
           allowNull: false,
