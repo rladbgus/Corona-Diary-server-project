@@ -17,13 +17,12 @@ module.exports = {
           expiresIn: 86400,
         });
         // 로그인 성공
-        res
-          .status(200)
-          .json({
-            message: "login success!",
-            nickName: result.nickName,
-            token: token,
-          });
+        res.status(200).json({
+          message: "login success!",
+          nickName: result.nickName,
+          token: token,
+          createdAt: result.createdAt,
+        });
       }
     } catch (err) {
       // server error handling

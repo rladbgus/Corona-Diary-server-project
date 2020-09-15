@@ -5,4 +5,6 @@ module.exports = {
   checkEmail: require("./checkEmail"),
   checkNickName: require("./checkNickName"),
   checkTocken: require("./checkToken"),
+  socialLogin: require("./socialLogin"),
+  socialInfo: require("./socialInfo"),
 };
