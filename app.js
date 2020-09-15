@@ -31,6 +31,7 @@ app.use(morgan("dev"));
 
 // set the secret key variable for jwt
 app.set("jwt-secret", config.secret);
+app.set("jwt-social-secret", config.socialSecret);
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
