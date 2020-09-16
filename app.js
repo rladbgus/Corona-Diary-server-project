@@ -12,6 +12,8 @@ const contentRouter = require("./routes/content");
 const commentRouter = require("./routes/comment");
 const contentListRouter = require("./routes/contentList");
 
+app.use(express.static('public'));
+
 app.use(
   cors({
     origin: [
@@ -31,6 +33,7 @@ app.use(morgan("dev"));
 
 // set the secret key variable for jwt
 app.set("jwt-secret", config.secret);
+app.set("jwt-social-secret", config.socialSecret);
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
@@ -45,6 +48,12 @@ app.use("/content", contentRouter);
 app.use("/mypage", mypageRouter);
 app.use("/comment", commentRouter);
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
-});
+require('greenlock-express').init({
+	packageRoot: __dirname,
+	configDir: "./greenlock.d",
+	maintainerEmail: 'shinuhyun@gmail.com'
+}).serve(app);
+
+//app.listen(port, () => {
+//  console.log(`Example app listening at http://localhost:${port}`);
+//});
