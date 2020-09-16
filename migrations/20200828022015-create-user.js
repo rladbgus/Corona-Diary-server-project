@@ -31,11 +31,11 @@ module.exports = {
         },
         age: {
           type: Sequelize.INTEGER,
-          allowNull: false,
+          allowNull: true,
         },
         city: {
           type: Sequelize.STRING,
-          allowNull: false,
+          allowNull: true,
         },
         createdAt: {
           allowNull: false,
