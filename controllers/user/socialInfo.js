@@ -10,13 +10,21 @@ module.exports = {
     const decoded = jwt.verify(socialToken, req.app.get("jwt-social-secret"));
 
     try {
+      //공백 걸러주기
+      if (!password || !nickName || !age || !city) {
+        return res.status(404).json({ message: "login fail; Wrong info" });
+      }
+
       const sameNickName = await User.findOne({
         where: { nickName: nickName },
       });
 
+      //닉네임중복 확인
       if (sameNickName) {
         return res.status(409).send({ message: "nickName already exists" });
       } else {
+        //닉네임 중복이 아니라면 유저의 추가정보를 넣어주고 저장.
+        //유저의 email로 salt값을 찾아서 password암호화해서 update
         await User.updatePassword(decoded.email, password);
         await User.update(
           {
@@ -29,6 +37,7 @@ module.exports = {
         const realUser = await User.findOne({
           where: { email: decoded.email },
         });
+        //정식토큰발급
         const secret = req.app.get("jwt-secret");
         const token = jwt.sign(
           { email: realUser.email, id: realUser.id },
