@@ -12,7 +12,7 @@ const contentRouter = require("./routes/content");
 const commentRouter = require("./routes/comment");
 const contentListRouter = require("./routes/contentList");
 
-app.use(express.static('public'));
+app.use(express.static("public"));
 
 app.use(
   cors({
@@ -48,12 +48,14 @@ app.use("/content", contentRouter);
 app.use("/mypage", mypageRouter);
 app.use("/comment", commentRouter);
 
-require('greenlock-express').init({
-	packageRoot: __dirname,
-	configDir: "./greenlock.d",
-	maintainerEmail: 'shinuhyun@gmail.com'
-}).serve(app);
+//배포 시 https를 위한 부분
+// require('greenlock-express').init({
+// 	packageRoot: __dirname,
+// 	configDir: "./greenlock.d",
+// 	maintainerEmail: 'shinuhyun@gmail.com'
+// }).serve(app);
 
-//app.listen(port, () => {
-//  console.log(`Example app listening at http://localhost:${port}`);
-//});
+//local에서 진행하기 위한 부분
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`);
+});

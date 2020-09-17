@@ -12,6 +12,7 @@ router.post("/login", userController.login.post);
 router.post("/socialLogin", userController.socialLogin.post);
 router.use("/socialInfo", socialAuthMiddleware);
 router.post("/socialInfo", userController.socialInfo.post);
+router.get("/socialInfo/check", userController.checkTocken.check);
 
 router.use("/", authMiddleware);
 
