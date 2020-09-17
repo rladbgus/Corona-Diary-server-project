@@ -48,12 +48,14 @@ app.use("/content", contentRouter);
 app.use("/mypage", mypageRouter);
 app.use("/comment", commentRouter);
 
+//배포 시 https를 위한 부분
 // require('greenlock-express').init({
 // 	packageRoot: __dirname,
 // 	configDir: "./greenlock.d",
 // 	maintainerEmail: 'shinuhyun@gmail.com'
 // }).serve(app);
 
+//local에서 진행하기 위한 부분
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
