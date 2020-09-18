@@ -11,7 +11,6 @@ module.exports = {
         {
           email: "deleted@deleted.com",
           password: "deleted",
-          nickName: null,
         },
         { where: { email: decoded.email } }
       );

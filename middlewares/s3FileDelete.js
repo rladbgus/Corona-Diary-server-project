@@ -25,6 +25,11 @@ module.exports = {
         let key = content.referenceFile.substring(58);
         const params = { Bucket: "corona-diary-test", Key: key };
 
+        db.Content.update(
+          { referenceFile: null },
+          { where: { id: contentId, userId: decoded.id } }
+        );
+
         s3.deleteObject(params, (err, data) => {
           if (err) {
             return res.json({

@@ -26,7 +26,6 @@ module.exports = {
         },
         nickName: {
           type: Sequelize.STRING,
-          allowNull: true,
           unique: true,
         },
         age: {

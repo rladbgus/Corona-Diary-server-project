@@ -58,7 +58,7 @@ module.exports = {
             }).then(([eachTagDetail, created]) => {
               // 태그와 유저의 조인테이블에 저장
               db.User_Tag.findOrCreate({
-                where: { tagId: eachTagDetail.id },
+                where: { userId: decoded.id, tagId: eachTagDetail.id },
                 defaults: {
                   userId: decoded.id,
                   tagId: eachTagDetail.id,
