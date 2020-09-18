@@ -72,7 +72,7 @@ module.exports = {
             defaults: { tag: eachTag },
           }).then(([eachTagDetail, created]) => {
             db.User_Tag.findOrCreate({
-              where: { tagId: eachTagDetail.id },
+              where: { userId: decoded.id, tagId: eachTagDetail.id },
               defaults: {
                 userId: decoded.id,
                 tagId: eachTagDetail.id,
